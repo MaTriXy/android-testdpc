@@ -120,7 +120,7 @@
 
         <receiver android:name=".FirstAccountReadyBroadcastReceiver"
                 android:exported="true"
-                android:enabled="false">
+                android:enabled="true">
             <intent-filter>
                 <action android:name="com.google.android.work.action.FIRST_ACCOUNT_READY"/>
             </intent-filter>
@@ -137,14 +137,16 @@
         </receiver>
 
         <receiver android:name=".policy.resetpassword.ResetPasswordService$LockedBootCompletedReceiver"
-            android:directBootAware="true" >
+                android:enabled="@bool/is_o_or_later"
+                android:directBootAware="true" >
             <intent-filter>
                 <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
         <service android:name=".policy.resetpassword.ResetPasswordService"
-            android:directBootAware="true" >
+                android:enabled="@bool/is_o_or_later"
+                android:directBootAware="true" >
         </service>
 
         <provider
